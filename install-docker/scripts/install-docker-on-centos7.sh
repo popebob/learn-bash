@@ -7,7 +7,6 @@
 
 YUMMY_DOCKER=https://download.docker.com/linux/centos/docker-ce.repo
 
-
 if [ "$1" == "-h" ] || [ -z "$1" ] || [ -v $YUMMY_DOCKER ]; then
   echo "Usage: `basename $0` REQUIRED ENVARS: YUMMY_DOCKER, `basename $0` -install to install"
   exit 0
