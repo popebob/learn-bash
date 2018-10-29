@@ -7,7 +7,6 @@
 
 YUMMY_DOCKER=https://download.docker.com/linux/centos/docker-ce.repo
 
-
 if [ "$1" == "-h" ] || [ -z "$1" ] || [ -v $YUMMY_DOCKER ]; then
   echo "Usage: `basename $0` REQUIRED ENVARS: YUMMY_DOCKER, `basename $0` -install to install"
   exit 0
@@ -15,32 +14,28 @@ fi
 
 if [ "$1" == "-install" ]; then
 
-echo "Using yum repo source: " $YUMMY_DOCKER
+  echo "Using yum repo source: " $YUMMY_DOCKER
+  echo "Starting Pre-Install"
+  echo "Adding yum-utils"
 
-echo "Starting Pre-Install"
+  yum install -y yum-utils device-mapper-persistent-date lvm2
+  
+  # add error checkong to make sure these worked and exit if not
 
-echo "Adding yum-utils"
+  echo "Adding docker-ce repos"
+  yum-config-manager --add-repo $YUMMY_DOCKER
 
-yum install -y yum-utils \
-        device-mapper-persistent-date \
-        lvm2;
+  echo "Installing latest docker-ce"
+  yum install -y docker-ce
 
-echo "Installing latest docker-ce"
+  echo "Installed docker-ce version:"
+  docker version
 
-yum install -y docker-ce
+  echo "Starting docker-ce" $(docker version)
+  systemctl start docker
 
-echo "Installed docker-ce version:"
+  echo "Hello, World! :)"
+  docker run hello-world
 
-docker version
-
-echo "Starting docker-ce" $(docker version)
-
-systemctl start docker
-
-echo "Hello, World! :)"
-
-docker run hello-world
-
-exit 0
-
+  exit 0
 fi
