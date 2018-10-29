@@ -18,9 +18,7 @@ if [ "$1" == "-install" ]; then
   echo "Starting Pre-Install"
   echo "Adding yum-utils"
 
-  yum install -y yum-utils \
-          device-mapper-persistent-date \
-          lvm2;
+  yum install -y yum-utils device-mapper-persistent-date lvm2
 
   echo "Adding docker-ce repos"
   yum-config-manager --add-repo $YUMMY_DOCKER
