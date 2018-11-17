@@ -1,0 +1,28 @@
+#!/bin/bash
+
+# Cody Adams
+# Learning Exercise
+# 11/17/2018
+# This bash script installs kubectl and minikube
+
+if [ "$1" == "-h" ] || [ -z "$1" ] || [ -v $NONE_YET ]; then
+  echo "Usage: `basename $0` REQUIRED ENVARS: CONJURE_DEMO_LXD_INIT_PATH (to "lxd-init_preseed.yaml"), `basename $0` -install to install"
+  exit 0
+fi
+
+if [ "$1" == "-install" ]; then
+
+  snap install kubectl --classic
+  
+  echo "Installed kubectl version:"
+  kubectl version
+
+  echo "Download and install minikube binary"
+  curl -Lo minikube https://storage.googleapis.com/minikube/releases/v0.30.0/minikube-linux-amd64 && chmod +x minikube && sudo cp minikube /usr/local/bin/ && rm minikube
+  
+  # have to install virtualbox, that's quite involved.
+  # https://websiteforstudents.com/install-virtualbox-latest-on-ubuntu-16-04-lts-17-04-17-10/
+  
+
+  exit 0
+fi
