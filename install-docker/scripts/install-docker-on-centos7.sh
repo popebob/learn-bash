@@ -5,7 +5,9 @@
 # 10/28/2018
 # This bash script installs docker-ce on CentOS 7
 
-YUMMY_DOCKER=https://download.docker.com/linux/centos/docker-ce.repo
+if [ -z "$YUMMY_DOCKER" ]; then
+  YUMMY_DOCKER=https://download.docker.com/linux/centos/docker-ce.repo
+fi
 
 if [ "$1" == "-h" ] || [ -z "$1" ] || [ -v $YUMMY_DOCKER ]; then
   echo "Usage: `basename $0` REQUIRED ENVARS: YUMMY_DOCKER, `basename $0` -install to install"
