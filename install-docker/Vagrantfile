@@ -8,7 +8,8 @@
 Vagrant.configure("2") do |config|
   
   config.vm.box = "centos/7"
-  config.vm.define "centos-vanilla"
+  config.vm.define "centos-vanilla_dockerhost"
+  config.vm.box_download_insecure = true
 
   config.vm.provider "virtualbox" do |vb|
     vb.memory = "4096"
@@ -19,8 +20,5 @@ Vagrant.configure("2") do |config|
     curl https://raw.githubusercontent.com/popebob/learn-bash/develop/install-docker/scripts/install-docker-on-centos7.sh > install-docker-on-centos7.sh
     chmod +x install-docker-on-centos7.sh
     sudo ./install-docker-on-centos7.sh -install
-    curl https://raw.githubusercontent.com/popebob/learn-bash/develop/install-docker/scripts/add-docker-compose.sh > add-docker-compose.sh
-    chmod +x add-docker-compose.sh
-    sudo ./add-docker-compose.sh -install
   SHELL
 end
