@@ -19,7 +19,6 @@ if [ "$1" == "-install" ]; then
   echo "some blog told me I need pip.  hrm, okay, suppose I'll take those python dependencies and update them"
   yum install -y python-pip
   yum upgrade python
-  sudo pip install --upgrade pip
 
   echo "Installing latest docker-compose"
   pip install docker-compose
