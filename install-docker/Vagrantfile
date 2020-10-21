@@ -20,5 +20,7 @@ Vagrant.configure("2") do |config|
     curl https://raw.githubusercontent.com/popebob/learn-bash/develop/install-docker/scripts/install-docker-on-centos7.sh > install-docker-on-centos7.sh
     chmod +x install-docker-on-centos7.sh
     sudo ./install-docker-on-centos7.sh -install
+    sudo service docker start
+    sudo docker ps -a
   SHELL
 end
