@@ -17,7 +17,7 @@ Vagrant.configure("2") do |config|
     echo "# Use the YAML callback plugin.
     stdout_callback = yaml
     # Use the stdout_callback when running ad-hoc commands.
-    bin_ansible_callbacks = True" |sudo tee -a /etc/ansible/ansible.cfg
+    bin_ansible_callbacks = "True" | sudo tee -a /etc/ansible/ansible.cfg
     ansible-galaxy install angstwad.docker_ubuntu
     ansible-galaxy install 'git+https://github.com/TerryHowe/ansible-modules-hashivault.git'
     export ANSIBLE_HOST_KEY_CHECKING=False
